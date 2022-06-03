@@ -164,6 +164,18 @@ public class MainActivity extends AppCompatActivity {
     public String getInterpretation(int [][]dataFrame,double slope){
        //provide interpretation based on your slope analysis
         // Your code here
-        return "Your Interpretation";
+        slope=LR.getSlope(dataFrame);
+        if(slope==0){
+            return "Improve YOUR Performance";
+        }
+        else if(slope==3.0){
+            return "Maximum Performance";
+        }
+        else if(slope>0.0 && slope<3.0){
+            return "constant growth";
+        }
+        else{
+            return "Your Interpretation";
+        }
     }
 }
