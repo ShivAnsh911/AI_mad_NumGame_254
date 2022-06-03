@@ -72,12 +72,57 @@ public class MainActivity extends AppCompatActivity {
     public void newMatch() {  //A game is composed of three matches
 
         int operand1 = random.nextInt(10);
-        int operand2=0;
-        //check is operand2 is not zero; otherwise in case of division-divide by zero error will come
+        int operand2= random.nextInt(10);
+        int correct_answer= -100;
+        correctButton= random.nextInt(4);
         String operator = operators[random.nextInt(4)];
         textView2.setText(operand1 + operator + operand2);
 
-      // Your code here, to diplay correct and incorrect options on the buttons
+
+        if(operator.equals("+"))
+            correct_answer = operand1+operand2;
+        else if(operator.equals("-"))
+            correct_answer = operand1-operand2;
+        else if(operator.equals("*"))
+            correct_answer = operand1*operand2;
+        else if(operator.equals("/"))
+            correct_answer = operand1/operand2;
+        else
+            correct_answer = operand1%operand2;
+
+        if(correctButton==0)
+        {
+            button1.setText(correct_answer+ "");
+            button2.setText(correct_answer+1 +"");
+            button3.setText(correct_answer-1 + "");
+            button4.setText(correct_answer+2 + "");
+        }
+        if(correctButton==1)
+        {
+            button1.setText(correct_answer+1 +"");
+            button2.setText(correct_answer+ "");
+            button3.setText(correct_answer-1 + "");
+            button4.setText(correct_answer+2 + "");
+        }
+        if(correctButton==2)
+        {
+            button1.setText(correct_answer+1 +"");
+            button2.setText(correct_answer-1 + "");
+            button3.setText(correct_answer+ "");
+            button4.setText(correct_answer+2 + "");
+        }
+        if(correctButton==3)
+        {
+
+            button1.setText(correct_answer+1 +"");
+            button2.setText(correct_answer-1 + "");
+            button3.setText(correct_answer+2 + "");
+            button4.setText(correct_answer+ "");
+        }
+
+        //check is operand2 is not zero; otherwise in case of division-divide by zero error will come
+
+        // Your code here, to diplay correct and incorrect options on the buttons
 
         if(matchCounter==3){    // if three matches are completed updatee the perfomrance in sharedpreferences
 
@@ -91,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 
     public int sumOfScore(){
         //Computing the sum of score array, which has the 1 or in each index,depending on correct or incorrect answers
